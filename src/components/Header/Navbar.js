@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import { MdFoodBank } from "react-icons/md";
 import { IoMdMenu } from "react-icons/io";
+import { useSidebarContext } from "../../context/sidebarContext";
 
 const Navbar = () => {
+  const { openSidebar } = useSidebarContext();
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -34,7 +36,11 @@ const Navbar = () => {
               <span className="navbar-brand-text fw-7">FastEat.</span>
             </Link>
             <div className="navbar-btns flex align-center">
-              <button type="button" className="navbar-show-btn text-white">
+              <button
+                type="button"
+                className="navbar-show-btn text-white"
+                onClick={() => openSidebar()}
+              >
                 <IoMdMenu size={27} />
               </button>
             </div>
