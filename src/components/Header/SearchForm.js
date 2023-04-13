@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Header.scss";
-import { BiSearch, BsSearch } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
+import { useMealContext } from "../../context/mealContext";
 import { useNavigate } from "react-router-dom";
 import { startFetchMealsBySearch } from "../../actions/mealsActions";
 
@@ -8,6 +9,7 @@ const SearchForm = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const { dispatch, meals } = useMealContext();
 
   const handleSearchTerm = (e) => {
     e.preventDefault();
@@ -22,11 +24,12 @@ const SearchForm = () => {
   const handleSearchResult = (e) => {
     e.preventDefault();
     navigate("/");
-    startFetchMealsBySearch(searchTerm);
+    startFetchMealsBySearch(dispatch, searchTerm);
   };
+
   return (
     <form
-      className="search-fomr flex align-center"
+      className="search-form flex align-center"
       onSubmit={(e) => handleSearchResult(e)}
     >
       <input
