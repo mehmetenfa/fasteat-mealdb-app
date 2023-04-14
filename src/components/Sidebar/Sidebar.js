@@ -21,17 +21,18 @@ const Sidebar = () => {
 
       <div className="side-content">
         <ul className="side-nav">
-          {categories.map((category) => (
-            <li className="side-item" key={category.idCategory}>
-              <Link
-                to={`/meal/category/${category.strCategory}`}
-                className="side-link ls-1 fs-13"
-                onClick={() => closeSidebar()}
-              >
-                {category.strCategory}
-              </Link>
-            </li>
-          ))}
+          {categories &&
+            categories.map((category) => (
+              <li className="side-item" key={category.idCategory}>
+                <Link
+                  to={`/meal/category/${category.strCategory}`}
+                  className="side-link ls-1 fs-13"
+                  onClick={() => closeSidebar()}
+                >
+                  {category.strCategory}
+                </Link>
+              </li>
+            ))}
         </ul>
       </div>
     </nav>
