@@ -8,7 +8,7 @@ const CategoryList = ({ categories }) => {
       <div className="container">
         <div className="sc-title">categories</div>
         <section className="sc-category grid">
-          {categories.map((category) => {
+          {categories && categories.map((category) => {
             const {
               idCategory: id,
               strCategory: title,
